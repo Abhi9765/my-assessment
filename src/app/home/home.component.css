@@ -1,0 +1,17 @@
+.bgPic {
+  background-image: url("https://mycollegekhoj.com/wp-content/uploads/2019/04/Dy-Patil.jpeg");
+
+  height: 70vh;
+}
+.navelements {
+  font-family: sans-serif;
+}
+
+.leftArrow,
+.rightArrow {
+  color: rgb(165, 7, 7);
+}
+.leftArrow:hover,
+.rightArrow:hover {
+  color: white !important;
+}

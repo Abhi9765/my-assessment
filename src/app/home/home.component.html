@@ -1,0 +1,94 @@
+<div class="main">
+    <div class="container p-1 flex justify-content-between align-items-center ">
+
+        <div class="heading h-6rem w-12rem">
+
+            <img style="height: 6rem;width: 12rem;"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR__JdqE3RF1dc8ZQhWs-HOVD_UEEy5H6YUUw&usqp=CAU">
+
+        </div>
+
+        <nav class="navelements flex gap-3 ">
+            <span
+                class=" text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">HOME</span>
+            <span
+                class="text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">COURSES</span>
+            <span
+                class="text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">EXAMINATION</span>
+            <span
+                class="text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">EVENTS</span>
+            <span
+                class="text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">ABOUT</span>
+            <span
+                class="text-md p-2 hover:bg-yellow-400 hover:text-white cursor-pointer transition-all transition-duration-200">NEWS</span>
+
+        </nav>
+
+    </div>
+
+    <div class="bgPic bg-no-repeat bg-cover bg-center "></div>
+    <div class="extraInfo col-12  grid flex text-white   font-bold">
+        <div class="first p-3 bg-red-700  col-6 text-center">Emerging Design Institute of the Year by ASSOCHAM 2023
+        </div>
+        <div class="second p-3 col-6 bg-yellow-400  text-center ">Awarded for Innovative Curriculum for the year,
+            Eduspark, 2023</div>
+    </div>
+
+    <div class="cards grid col-12 flex justify-content-between p-5 ">
+        <div class="navigationCard text-center  flex flex-column justify-content-start align-items-center p-2">
+            <h3 class="text-2xl">Dr. D. Y. Patil School<br> of Design Edge</h3>
+            <div class="arrowContainer w-full flex justify-content-evenly align-items-center">
+                <div
+                    class="leftArrow p-4 border-circle  hover:bg-red-700 border-1 border-red-700  w-2rem h-2rem flex justify-content-center align-items-center">
+                    <i class="pi pi-arrow-left" style="font-weight: bold; font-size: 1.2rem;"></i>
+                </div>
+                <div
+                    class="rightArrow p-4 border-circle border-1 hover:bg-red-700 border-red-700 w-2rem h-2rem flex justify-content-center align-items-center">
+                    <i class="pi pi-arrow-right" style="font-weight: bold;font-size: 1.2rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="awardCard  border-round-md  p-2 bg-gray-100 w-15rem shadow-2   hover:shadow-7   transition-ease-out transition-duration-200">
+            <h3 class="text-2xl text-red-700">AWARD WINNING</h3>
+            <span>Design Campus</span>
+        </div>
+
+        <div
+            class="placementCard border-round-md  p-2 bg-gray-100 w-15rem shadow-2   hover:shadow-7   transition-ease-out transition-duration-200">
+            <h3 class="text-2xl text-red-700">MASTER- <br>CLASSES</h3>
+            <span>From Industry Experts</span>
+        </div>
+
+        <div
+            class="studentsReport border-round-md  p-2 bg-gray-100 w-15rem shadow-2   hover:shadow-7   transition-ease-out transition-duration-200">
+            <h3 class="text-2xl text-red-700">VISIT TO YOUR- <br>CLASS</h3>
+            <span class="text-yellow-500 cursor-pointer" (click)="selectUser()">Click here to see</span>
+            <p-dialog header="Please select your role!" [(visible)]="visible" [style]="{width: '30vw'}" [modal]="true">
+
+                <form #sampleForm="ngForm" class="flex flex-column gap-3" (ngSubmit)="save(sampleForm)">
+
+                    <label for="teacher">
+
+                        <p-radioButton name="role" value="teacher" id=teacher ngModel></p-radioButton>
+                        TEACHER</label>
+
+                    <label for="student">
+
+                        <p-radioButton name="role" value="student" id=student ngModel></p-radioButton>
+                        STUDENT</label>
+                    <p-button type="submit" class="text-right" severity="success" [loading]="loading">Submit</p-button>
+                </form>
+            </p-dialog>
+        </div>
+
+        <div
+            class="advertise border-round-md  p-2 bg-gray-100 w-15rem shadow-2   hover:shadow-7   transition-ease-out transition-duration-200">
+            <h3 class="text-2xl text-red-700">TOP DESIGN</h3>
+            <span>Institute Of The Year by<br>CSR,2023</span>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,66 @@
+<p-toast key="toast"></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<p-table [value]=" studentList" styleClass="p-datatable-gridlines"
+    [tableStyle]="{ 'min-width': '50rem' ,'padding':'0.5rem'}" [rowHover]="true">
+    <ng-template pTemplate="caption">
+        <div class="header grid  flex  align-items-center">
+
+            <span class="font-bold col-6 text-lg flex justify-content-end ">STUDENTLIST</span>
+
+            <div class="rolebtn col-6  flex justify-content-end align-items-center">
+
+                <p-button label="+Add" (click)="sidebarControl()" *ngIf="role==='teacher'"></p-button>
+            </div>
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th class="text-center" pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon>
+
+            </th>
+            <th class="text-center" pSortableColumn="rollno" style="width:20%">ROLL NUMBER <p-sortIcon
+                    field="rollno"></p-sortIcon>
+
+            </th>
+            <th class="text-center" pSortableColumn="math" style="width:20%">MATH <p-sortIcon field="math"></p-sortIcon>
+            </th>
+            <th class="text-center" pSortableColumn="physics" style="width:20%">PHYSICS <p-sortIcon
+                    field="physics"></p-sortIcon></th>
+            <th class="text-center" pSortableColumn="english" style="width:20%">ENGLISH<p-sortIcon
+                    field="english"></p-sortIcon></th>
+            <th class="text-center">ACTION</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td class="text-center uppercase">{{ product.name}}</td>
+            <td class="text-center">{{ product.rollno }}</td>
+            <td class="text-center">{{ product.math }}</td>
+            <td class="text-center">{{ product.physics }}</td>
+            <td class="text-center">{{ product.english }}</td>
+            <td class="flex justify-content-between gap-3">
+
+                <p-button *ngIf="role==='teacher'" severity="success" icon="pi pi-file-edit"
+                    (onClick)="editData(product)"></p-button>
+                <p-button severity="danger" icon="pi pi-trash" *ngIf="role==='teacher'"
+                    (click)="deleteStudent(product,$event)"></p-button>
+                <p-button icon="pi pi-percentage" (click)="calPercentage(product)"></p-button>
+
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <div class="di text-center w-full">
+            <h3>No data found!</h3>
+        </div>
+    </ng-template>
+</p-table>
+
+<!-- Sidebar -->
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-25rem">
+    <app-form (notify)="onSubmit($event)" (indicator)="hidesidebar($event)"></app-form>
+    <!-- here notify carring false value this is an custom event binding $event contain notify value which is false -->
+</p-sidebar>
+<!--  -->

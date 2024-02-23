@@ -1,0 +1,44 @@
+<p-toast key="toast"></p-toast>
+<form [formGroup]="addStudentDetails" class="flex flex-column justify-content-between  gap-3">
+
+    <div class="nameClass">
+        <label class="text-sm">STUDENT NAME:</label><br>
+        <input type="text uppercase" pInputText formControlName="name" class="text-sm uppercase"
+            placeholder="ENTER STUDENT NAME HERE" style="width:100%;" /><br>
+        <span *ngIf="name.hasError('required') &&name.touched" class="text-red-500 text-xs">This field is
+            required!</span>
+    </div>
+
+    <div class="rollnoClass">
+        <label class="text-sm">ROLL NUMBER:</label><br>
+        <input type="number" class="text-sm" pInputText formControlName="rollno"/><br>
+        <span *ngIf="rollno.hasError('required') &&rollno.touched" class="text-red-500 text-xs">This field is
+            required!</span>
+    </div>
+    <div class="markssection">
+
+        <label class="text-sm">ENTER STUDENT MARKS</label>
+        <div class="subjectmarks flex gap-1">
+            <p-inputGroup>
+                <input class="text-xs" type="number" formControlName="math" pInputText placeholder="MATH" />
+
+            </p-inputGroup>
+
+            <p-inputGroup>
+
+                <input class="text-xs" type="number" pInputText formControlName="physics" placeholder="PHYSICS" />
+
+            </p-inputGroup>
+
+            <p-inputGroup>
+
+                <input class="text-xs" type="number" pInputText formControlName="english" placeholder="ENGLISH" />
+            </p-inputGroup>
+        </div>
+    </div>
+    <div class="submitBtn  mt-3  text-right">
+        <button type="button" pButton style="background-color:  var(--green-500);border: none;"
+            (click)="flag ? update(): onSubmit()" label="{{ flag ? 'Update' : 'Submit' }}"></button>
+    </div>
+
+</form>
