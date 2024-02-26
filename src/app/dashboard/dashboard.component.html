@@ -33,6 +33,7 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
+        <ng-template #tableData>
         <tr>
             <td class="text-center uppercase">{{ product.name}}</td>
             <td class="text-center">{{ product.rollno }}</td>
@@ -41,23 +42,36 @@
             <td class="text-center">{{ product.english }}</td>
             <td>
 
-                <div class="actionBtn flex  gap-3 align-items-center">
-                    <div class="editBtn  border-circle p-2 hover:bg-white">
-                        <i *ngIf="role==='teacher'" class="pi pi-file-edit" id="editBtn" (click)="editData(product)"
+                <div class="actionBtn flex  gap-3 align-items-center"[ngClass]="{perTextCenter: role === 'student'}">
+                    <div class="editBtn  border-circle p-2 hover:bg-white" *ngIf="role==='teacher'">
+                        <i  class="pi pi-file-edit" id="editBtn" (click)="editData(product)"
                             pTooltip="click to edit" tooltipPosition="left" style="font-size: 1.2rem;"></i>
                     </div>
-                    <div class="deleteBtn  border-circle p-2 hover:bg-white">
-                        <i class="pi pi-trash" *ngIf="role==='teacher'" id="deleteBtn"
+                    <div class="deleteBtn  border-circle p-2 hover:bg-white" *ngIf="role==='teacher'">
+                        <i class="pi pi-trash"  id="deleteBtn"
                             (click)="deleteStudent(product,$event)" pTooltip="click to delete" tooltipPosition="left"
                             style="font-size: 1.2rem;"></i>
                     </div>
-                    <div class="perBtn  border-circle p-2 hover:bg-white">
+                    <div class="perBtn  border-circle p-2 hover:bg-white text-center" >
                         <i class="pi pi-percentage" (click)="calPercentage(product)" pTooltip="calculate percentage"
                             tooltipPosition="left" style="font-size: 1rem;" id="perBtn"></i>
                     </div>
                 </div>
             </td>
         </tr>
+    </ng-template>
+        <!--  -->
+        <tr *ngIf="skeleton else tableData">
+            <td><p-skeleton></p-skeleton></td>
+            <td><p-skeleton></p-skeleton></td>
+            <td><p-skeleton></p-skeleton></td>
+            <td><p-skeleton></p-skeleton></td>
+            <td><p-skeleton></p-skeleton></td>
+            <td><p-skeleton></p-skeleton></td>
+        </tr>
+        <!--  -->
+
+
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <div class="di text-center w-full">

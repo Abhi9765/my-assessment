@@ -9,6 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
+import { SkeletonModule } from 'primeng/skeleton';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -21,7 +22,8 @@ import { TooltipModule } from 'primeng/tooltip';
     ToastModule,
     ConfirmDialogModule,
     DialogModule,
-    TooltipModule
+    TooltipModule,
+    SkeletonModule
   ],
   providers: [MessageService, ConfirmationService],
   templateUrl: './dashboard.component.html',
@@ -33,10 +35,14 @@ export class DashboardComponent implements OnInit {
   sidebarVisible: boolean = false;
   confirmationService = inject(ConfirmationService);
   messageService = inject(MessageService);
+  skeleton:boolean=true;
 
   @ViewChild(FormComponent) form: FormComponent;
   ngOnInit(): void {
     this.studentList = JSON.parse(localStorage.getItem('student'));
+    setTimeout(()=>{
+      this.skeleton=false
+    },500);
   }
 
   hidesidebar(event) {

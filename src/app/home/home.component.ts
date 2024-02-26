@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -18,7 +19,8 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     ReactiveFormsModule,
     RadioButtonModule,
-    ToastModule
+    ToastModule,
+    AnimateOnScrollModule 
   ],
 providers:[MessageService],
   templateUrl: './home.component.html',

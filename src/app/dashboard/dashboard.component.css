@@ -14,3 +14,7 @@ transition: ease-out !important;
 #deleteBtn:hover{
   color: var(--red-400);
 }
+
+.perTextCenter{
+justify-content: center; 
+}
