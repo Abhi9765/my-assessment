@@ -1,8 +1,11 @@
 <p-toast key="toast"></p-toast>
 <form [formGroup]="addStudentDetails" class="flex flex-column justify-content-between  gap-3">
-
+<h3 *ngIf="flag else updateStudent">Update student details</h3>
+<ng-template #updateStudent>
+    <h3>New student entry</h3>
+</ng-template>
     <div class="nameClass">
-        <label class="text-sm">STUDENT NAME:</label><br>
+        <label class="text-sm">STUDENT NAME:<span class="text-red-500 text-md">*</span></label><br>
         <input type="text uppercase" pInputText formControlName="name" class="text-sm uppercase"
             placeholder="ENTER STUDENT NAME HERE" style="width:100%;" /><br>
         <span *ngIf="name.hasError('required') &&name.touched" class="text-red-500 text-xs">This field is
@@ -10,30 +13,32 @@
     </div>
 
     <div class="rollnoClass">
-        <label class="text-sm">ROLL NUMBER:</label><br>
-        <input type="number" class="text-sm" pInputText formControlName="rollno"/><br>
+        <label class="text-sm">ROLL NUMBER:<span class="text-red-500 text-md">*</span></label><br>
+        <input type="number" class="text-sm" pInputText formControlName="rollno" /><br>
         <span *ngIf="rollno.hasError('required') &&rollno.touched" class="text-red-500 text-xs">This field is
             required!</span>
     </div>
     <div class="markssection">
 
-        <label class="text-sm">ENTER STUDENT MARKS</label>
-        <div class="subjectmarks flex gap-1">
-            <p-inputGroup>
+        <label class="text-sm">ENTER STUDENT MARKS:<span class="text-red-500 text-md">*</span></label>
+        <div class="subjectmarks flex flex-column gap-1 mt-1">
+
+            <div class="mathMarks flex justify-content-between align-items-center ">
+
+                <label for="math" class="text-sm">Math<span class="text-red-500 text-md">*</span></label>
                 <input class="text-xs" type="number" formControlName="math" pInputText placeholder="MATH" />
+            </div>
 
-            </p-inputGroup>
-
-            <p-inputGroup>
-
+            <div class="physicsMarks flex justify-content-between align-items-center">
+                <label for="physics" class="text-sm">Physics<span class="text-red-500 text-md">*</span></label>
                 <input class="text-xs" type="number" pInputText formControlName="physics" placeholder="PHYSICS" />
+            </div>
 
-            </p-inputGroup>
-
-            <p-inputGroup>
-
+            <div class="englishMarks flex justify-content-between  align-items-center">
+                <label for="english"  class="text-sm">English<span class="text-red-500 text-md">*</span></label>
                 <input class="text-xs" type="number" pInputText formControlName="english" placeholder="ENGLISH" />
-            </p-inputGroup>
+            </div>
+
         </div>
     </div>
     <div class="submitBtn  mt-3  text-right">

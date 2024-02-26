@@ -1,15 +1,16 @@
 <p-toast key="toast"></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<p-table [value]=" studentList" styleClass="p-datatable-gridlines"
+<p-table [value]="studentList" styleClass="p-datatable-gridlines"
     [tableStyle]="{ 'min-width': '50rem' ,'padding':'0.5rem'}" [rowHover]="true">
     <ng-template pTemplate="caption">
         <div class="header grid  flex  align-items-center">
 
-            <span class="font-bold col-6 text-lg flex justify-content-end ">STUDENTLIST</span>
+            <span class="font-bold col-6 text-lg flex justify-content-end ">STUDENT LIST</span>
 
             <div class="rolebtn col-6  flex justify-content-end align-items-center">
 
-                <p-button label="+Add" (click)="sidebarControl()" *ngIf="role==='teacher'"></p-button>
+                <p-button label="+Add" (click)="sidebarControl()" *ngIf="role==='teacher'" pAutoFocus
+                    [autofocus]="true"></p-button>
             </div>
         </div>
 
@@ -21,12 +22,10 @@
 
             </th>
             <th class="text-center" pSortableColumn="rollno" style="width:20%">ROLL NUMBER <p-sortIcon
-                    field="rollno"></p-sortIcon>
-
-            </th>
+                    field="rollno"></p-sortIcon></th>
             <th class="text-center" pSortableColumn="math" style="width:20%">MATH <p-sortIcon field="math"></p-sortIcon>
             </th>
-            <th class="text-center" pSortableColumn="physics" style="width:20%">PHYSICS <p-sortIcon
+            <th class="text-center" pSortableColumn="physics" style="width:20%">PHYSICS<p-sortIcon
                     field="physics"></p-sortIcon></th>
             <th class="text-center" pSortableColumn="english" style="width:20%">ENGLISH<p-sortIcon
                     field="english"></p-sortIcon></th>
@@ -40,14 +39,23 @@
             <td class="text-center">{{ product.math }}</td>
             <td class="text-center">{{ product.physics }}</td>
             <td class="text-center">{{ product.english }}</td>
-            <td class="flex justify-content-between gap-3">
+            <td>
 
-                <p-button *ngIf="role==='teacher'" severity="success" icon="pi pi-file-edit"
-                    (onClick)="editData(product)"></p-button>
-                <p-button severity="danger" icon="pi pi-trash" *ngIf="role==='teacher'"
-                    (click)="deleteStudent(product,$event)"></p-button>
-                <p-button icon="pi pi-percentage" (click)="calPercentage(product)"></p-button>
-
+                <div class="actionBtn flex  gap-3 align-items-center">
+                    <div class="editBtn  border-circle p-2 hover:bg-white">
+                        <i *ngIf="role==='teacher'" class="pi pi-file-edit" id="editBtn" (click)="editData(product)"
+                            pTooltip="click to edit" tooltipPosition="left" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <div class="deleteBtn  border-circle p-2 hover:bg-white">
+                        <i class="pi pi-trash" *ngIf="role==='teacher'" id="deleteBtn"
+                            (click)="deleteStudent(product,$event)" pTooltip="click to delete" tooltipPosition="left"
+                            style="font-size: 1.2rem;"></i>
+                    </div>
+                    <div class="perBtn  border-circle p-2 hover:bg-white">
+                        <i class="pi pi-percentage" (click)="calPercentage(product)" pTooltip="calculate percentage"
+                            tooltipPosition="left" style="font-size: 1rem;" id="perBtn"></i>
+                    </div>
+                </div>
             </td>
         </tr>
     </ng-template>

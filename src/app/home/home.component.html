@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="main">
     <div class="container p-1 flex justify-content-between align-items-center ">
 
@@ -65,20 +66,19 @@
             class="studentsReport border-round-md  p-2 bg-gray-100 w-15rem shadow-2   hover:shadow-7   transition-ease-out transition-duration-200">
             <h3 class="text-2xl text-red-700">VISIT TO YOUR- <br>CLASS</h3>
             <span class="text-yellow-500 cursor-pointer" (click)="selectUser()">Click here to see</span>
-            <p-dialog header="Please select your role!" [(visible)]="visible" [style]="{width: '30vw'}" [modal]="true">
+            <p-dialog header="Please select your role!" [(visible)]="visible" [style]="{width: '30vw'}" [modal]="true" (onHide)="sampleForm.reset()">
 
                 <form #sampleForm="ngForm" class="flex flex-column gap-3" (ngSubmit)="save(sampleForm)">
 
                     <label for="teacher">
-
-                        <p-radioButton name="role" value="teacher" id=teacher ngModel></p-radioButton>
+                    <p-radioButton name="role" value="teacher" id=teacher ngModel></p-radioButton>
                         TEACHER</label>
 
                     <label for="student">
 
                         <p-radioButton name="role" value="student" id=student ngModel></p-radioButton>
                         STUDENT</label>
-                    <p-button type="submit" class="text-right" severity="success" [loading]="loading">Submit</p-button>
+                    <p-button type="submit" class="text-right" severity="success" [loading]="loading" [label]="submit"></p-button>
                 </form>
             </p-dialog>
         </div>

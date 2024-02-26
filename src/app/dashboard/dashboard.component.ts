@@ -8,7 +8,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
-
+import { TooltipModule } from 'primeng/tooltip';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -21,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
     ToastModule,
     ConfirmDialogModule,
     DialogModule,
+    TooltipModule
   ],
   providers: [MessageService, ConfirmationService],
   templateUrl: './dashboard.component.html',
@@ -46,6 +47,7 @@ export class DashboardComponent implements OnInit {
     this.form.addStudentDetails.reset();
     this.sidebarVisible = true;
     this.form.flag = false;
+    this.form.addStudentDetails.get('rollno').enable()
   }
 
   onSubmit(event) {
@@ -85,14 +87,14 @@ export class DashboardComponent implements OnInit {
           });
         }
       },
-      reject: () => {
-        this.messageService.add({
-          key: 'toast',
-          severity: 'error',
-          summary: 'Rejected',
-          detail: 'You have rejected',
-        });
-      },
+      // reject: () => {
+      //   // this.messageService.add({
+      //   //   key: 'toast',
+      //   //   severity: 'error',
+      //   //   summary: 'Rejected',
+      //   //   detail: 'You have rejected',
+      //   // });
+      // },
     });
   }
 

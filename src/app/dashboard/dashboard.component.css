@@ -1,3 +1,16 @@
+#editBtn:hover,
+#deleteBtn:hover,
+#perBtn:hover {
+  font-weight: bold !important;
+transition-duration: 1s !important;
+transition: ease-out !important;
 
+}
 
-   
+#editBtn:hover,#perBtn:hover{
+  color: var(--blue-400);
+}
+
+#deleteBtn:hover{
+  color: var(--red-400);
+}

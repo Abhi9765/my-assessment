@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -16,25 +18,40 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     FormsModule,
     ReactiveFormsModule,
     RadioButtonModule,
+    ToastModule
   ],
-
+providers:[MessageService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  messageService=inject(MessageService);
   router = inject(Router);
   visible = false;
   role = '';
   loading: boolean = false;
+  submit='Submit'
   selectUser() {
     this.visible = true;
   }
 
   save(form) {
+   if(form.control.touched){
     this.loading = true;
+    this.submit=''
     setTimeout(() => {
-      localStorage.setItem('role', form.controls['role'].value);
+    
       this.router.navigate(['dashboard']);
-    }, 300);
+      localStorage.setItem('role', form.controls['role'].value);
+    },200);
+
+   }else{
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'please select your role first!',
+    });
+   }
+  
   }
 }

@@ -68,7 +68,7 @@ export class FormComponent implements OnInit {
       key: 'toast',
       severity: 'error',
       summary: 'Error',
-      detail: 'marks should be >0 & <100!',
+      detail: 'marks should be greater than 0 or less than equal to 100!',
     });
   }
 
@@ -81,7 +81,8 @@ export class FormComponent implements OnInit {
     let Physics = this.addStudentDetails.get('physics').value;
     let English = this.addStudentDetails.get('english').value;
     if (this.addStudentDetails.valid) {
-      if (this.addStudentDetails.get('rollno').value > 0) {
+      if (this.addStudentDetails.get('rollno').value > 0 && this.addStudentDetails.get('rollno').value<=200){
+        
         if (this.isStudentPresent(this.addStudentDetails.get('rollno').value)) {
           this.messageService.add({
             key: 'toast',
@@ -118,7 +119,7 @@ export class FormComponent implements OnInit {
           key: 'toast',
           severity: 'error',
           summary: 'Error',
-          detail: 'roll number should not equal to zero!',
+          detail: 'roll number will be always greater than 0 or less than equal to 200!',
         });
       }
     } else {
